@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-en="Upload Video" data-et="Laadi video üles">Upload Video</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1 class="main-headline" data-en="Volleyball out of bounds detector" data-et="Võrkpalli kotkasilm">Volleyball out of bounds detector</h1>
+        <div class="top-right-buttons">
+            <button class="btn btn-info" onclick="toggleAboutModal()" data-en="About" data-et="Info">About</button>
+            <button class="btn btn-info ml-2 language-button" onclick="toggleLanguage()" data-en="ENG" data-et="EST">ENG</button>
+        </div>
+    </div>
+
+    <div class="container mt-5 text-center">
+        <h1 class="mb-4" data-en="Upload your video for processing" data-et="Valige video töötlemiseks">Upload your video for processing</h1>
+        <form id="uploadForm" action="/" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="videoUpload" id="chooseVideoLabel" class="btn btn-primary choose-video-btn" data-en="Choose video" data-et="Valige video">Choose video</label>
+                <input type="file" name="video" accept="video/*" id="videoUpload" required class="form-control-file" style="display: none;" onchange="handleFileSelect()">
+            </div>
+            <div class="text-center">
+                <input type="submit" value="Upload Video" class="btn btn-primary upload-btn" data-en="Upload video" data-et="Laadi video">
+            </div>
+        </form>
+        <div class="spinner" id="spinner" style="display: none;">
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only" data-en="Loading..." data-et="Laadimine...">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div id="aboutModal" class="about-modal">
+        <div class="about-modal-content">
+            <span class="close" onclick="toggleAboutModal()">&times;</span>
+            <h2 data-en="About this Project" data-et="Info projekti kohta">About this Project</h2>
+            <p data-en="Introduction: We are first year IT Bachelor's students Oskar Männik and Philip Paškov. This project is created for the Computational Imaging course and it is designed to help you upload and process volleyball videos. It uses advanced algorithms to analyze the videos and provide insights." data-et="Tutvustus: Me oleme Informaatika bakalaureuse esimese kursuse tudengid Oskar Männik ja Philip Paškov. Projekt on valminud aine 'Computational Imaging' raames ja on loodud selleks, et aidata kasutajal võrkpallivideot analüüsida. Tarkvara kasutab videot analüüsimiseks ja pakub kasutajale visuaalseid tulemusi.">
+                Introduction: We are first year IT Bachelor's students Oskar Männik and Philip Paškov. This project is created for the Computational Imaging course and it is designed to help you upload and process volleyball videos. It uses advanced algorithms to analyze the videos and provide insights.
+            </p>
+            <p data-en="How it is used: Users can upload their volleyball match videos (the video has to be static) through this platform. After uploading the video, the user is asked to input the corners of the court (top_left, bottom_left, top_right, bottom_rigth). Then the system processes these videos to identify key events, such as when the ball goes out of bounds without player contact. This allows for a more detailed review of the game." data-et="Kuidas seda kasutatakse: Kasutajad saavad platvormi kaudu üles laadida oma võrkpallimängude videod (video peab olema staatiline). Seejärel peab kasutaja märkima ära väljaku nurgad (vasak ülemine, vasak alumine, parem ülemine, parem alumine) ja lõpuks töötleb süsteem videot, et tuvastada väljaspool väljakupiire maandunud palli kaadrid. See võimaldab mängu üksikasjalikumat ülevaatamist, et hoida mäng ausana.">
+                How it is used: Users can upload their volleyball match videos (the video has to be static) through this platform. After uploading the video, the user is asked to input the corners of the court (top_left, bottom_left, top_right, bottom_rigth). Then the system processes these videos to identify key events, such as when the ball goes out of bounds without player contact. This allows for a more detailed review of the game.            </p>
+            <p data-en="What it is used for: It is used to detect whether the ball landed outside of the court. It might be useful for referees and low budget games without referee. By reviewing out of bounds frames and processed video highlights, they can get more fair game." data-et="Milleks tarkvara kasutada: Et tuvastada, kas pall maandus väljaspool väljakupiire. See võib olla kasulik kohtunikele ja madala eelarvega mängudele, kus pole kohtunikku.">
+                What it is used for: It is used to detect whether the ball landed outside of the court. It might be useful for referees and low budget games without referee. By reviewing out of bounds frames and processed video highlights, they can get more fair game.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showSpinner() {
+            document.getElementById('spinner').style.display = 'block';
+        }
+
+        function toggleLanguage() {
+            const elements = document.querySelectorAll('[data-en]');
+            const button = document.querySelector('.language-button');
+            const lang = button.textContent === 'ENG' ? 'et' : 'en';
+            button.textContent = button.getAttribute(`data-${lang}`);
+            elements.forEach(el => {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'OPTION') {
+                    el.value = el.getAttribute(`data-${lang}`);
+                } else {
+                    el.textContent = el.getAttribute(`data-${lang}`);
+                }
+            });
+        }
+
+        function validateForm() {
+            const videoUpload = document.getElementById('videoUpload');
+            if (!videoUpload.value) {
+                alert('Please choose a video first.');
+                return false;
+            }
+            showSpinner();
+            return true;
+        }
+
+        function handleFileSelect() {
+            const chooseVideoLabel = document.getElementById('chooseVideoLabel');
+            chooseVideoLabel.innerHTML = '<i class="fas fa-check"></i> <span data-en="Video Selected" data-et="Video valitud">Video Selected</span>';
+            chooseVideoLabel.classList.add('video-selected');
+        }
+
+        function toggleAboutModal() {
+            const modal = document.getElementById('aboutModal');
+            modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa6OWJt8N8KNXEpTfoPTVnn5M" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIyqU4XmnF0C8fivl9Q9EBSTMRd5oDjM6K2Y7bg" crossorigin="anonymous"></script>
+</body>
+</html>
