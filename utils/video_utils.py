@@ -18,12 +18,6 @@ def read_video(video_path):
     cap.release()
     return frames
 
-def apply_masks_to_frame(frame, player_detections):
-    # Apply mask over players
-    for track_id, bbox in player_detections.items():
-        x1, y1, x2, y2 = map(int, bbox)
-        cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 0), -1)  # -1 fills the rectangle
-    return frame
 
 def save_video(output_video_frames, output_video_path):
     # Check if the list is empty
