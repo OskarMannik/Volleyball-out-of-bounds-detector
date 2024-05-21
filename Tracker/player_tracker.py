@@ -1,7 +1,6 @@
 from ultralytics import YOLO
 import cv2
 import pickle
-import tensorflow as tf
 import numpy as np
 
 class PlayerTracker:
@@ -41,10 +40,6 @@ class PlayerTracker:
         
         return player_dict
     
-    def create_mask(self, pred_mask):
-        pred_mask = tf.math.argmax(pred_mask, axis=-1)
-        pred_mask = pred_mask[..., tf.newaxis]
-        return pred_mask[0]
     
     def draw_bboxes(self, video_frames, player_detections):
         output_video_frames = []
