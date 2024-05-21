@@ -9,7 +9,7 @@ inspiration: https://github.com/abdullahtarek/tennis_analysis
 dataset: https://universe.roboflow.com/shukur-sabzaliev1/volleyball_v2
 
 weights: https://drive.google.com/drive/u/0/folders/1vFNNyBG1tCBDa1jI_mOUjDqDQTmat7Cn
-download the weights and put them in the models folder with the 'last.pt' name
+download the weights and put them in the models folder with the 'last.pt' name. Right now it is empty so it will not work.
 
 To install the required Python packages, run the following command:
 pip install -r requirements.txt
