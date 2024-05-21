@@ -12,3 +12,5 @@ weights: https://drive.google.com/drive/u/0/folders/1vFNNyBG1tCBDa1jI_mOUjDqDQTm
 
 To install the required Python packages, run the following command:
 pip install -r requirements.txt
+
+To run the project it is recommended to install CUDA.
