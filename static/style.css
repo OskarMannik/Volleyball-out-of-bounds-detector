@@ -1,21 +1,21 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background-image: url('https://img.olympics.com/images/image/private/t_s_16_9_g_auto/t_s_w860/f_auto/v1536936974/primary/exvzqcvorticinejmmel'); /* Replace with actual URL */
+    background-image: url('https://img.olympics.com/images/image/private/t_s_16_9_g_auto/t_s_w860/f_auto/v1536936974/primary/exvzqcvorticinejmmel');
     background-size: cover;
     background-position: center;
-    color: #ecf0f1; /* Light text */
+    color: #ecf0f1;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    min-height: 100vh; /* Ensure it covers the viewport height */
+    min-height: 100vh;
 }
 
 .header {
     width: 100%;
-    padding: 20px 10px; /* Add padding to move it away from the top */
+    padding: 20px 10px;
     background: rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
@@ -28,15 +28,14 @@ h1, h2 {
     font-weight: 700;
     text-align: center;
     margin-bottom: 20px;
-    
 }
 
 h1.main-headline {
-    font-size: 4.0em; /* Increase the size for better visibility */
-    font-weight: 900; /* Make the headline thicker */
-    color: #f39c12; /* Volleyball-themed color */
-    text-shadow: 2px 2px #34495e; /* Slight shadow for depth */
-    margin-top: 55px; /* Add top margin */
+    font-size: 4.0em;
+    font-weight: 900;
+    color: #f39c12;
+    text-shadow: 2px 2px #34495e;
+    margin-top: 55px;
 }
 
 .top-right-buttons {
@@ -48,51 +47,51 @@ h1.main-headline {
 }
 
 .language-button, .btn-info {
-    font-size: 1.2em; /* Ensuring same size as other buttons */
-    cursor: pointer; /* Change cursor to pointer */
-    transition: transform 0.3s ease; /* Smooth transition */
-    background-color: #f39c12; /* Volleyball-themed color */
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: #f39c12;
     color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
-    margin-left: 5px; /* Ensure some space between buttons */
+    margin-left: 5px;
 }
 
 .language-button:hover, .btn-info:hover {
-    transform: scale(1.05); /* Slightly enlarge button */
-    background-color: #e67e22; /* Darker on hover */
+    transform: scale(1.05);
+    background-color: #e67e22;
 }
 
 .container {
     max-width: 600px;
     padding: 20px;
-    background-color: rgba(52, 73, 94, 0.8); /* Semi-transparent background */
+    background-color: rgba(52, 73, 94, 0.8);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     text-align: center;
-    margin: 20px auto; /* Add margin to center vertically within the viewport */
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Ensure space is distributed between elements */
-    height: auto; /* Adjust to fit content */
+    justify-content: space-between;
+    height: auto;
 }
 
 .choose-video-btn, .upload-btn, .download-btn {
-    font-size: 1.1em; /* Adjust the font size to make the button smaller */
-    padding: 8px 16px; /* Adjust padding to make the button smaller */
-    cursor: pointer; /* Change cursor to pointer */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition */
-    background-color: #f39c12; /* Volleyball-themed color */
+    font-size: 1.1em;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    background-color: #f39c12;
     border-color: #e67e22;
     color: #fff;
     border-radius: 5px;
 }
 
 .choose-video-btn:hover, .upload-btn:hover, .download-btn:hover {
-    background-color: #e67e22; /* Darker on hover */
+    background-color: #e67e22;
     border-color: #d35400;
-    transform: scale(1.05); /* Slightly enlarge button */
+    transform: scale(1.05);
     color: #fff;
 }
 
@@ -110,7 +109,7 @@ h1.main-headline {
 .frames-container {
     text-align: center;
     margin-top: 20px;
-    flex-grow: 1; /* Ensure it takes up available space */
+    flex-grow: 1;
 }
 
 .frames-thumbnails {
@@ -140,32 +139,31 @@ h1.main-headline {
 }
 
 .video-selected {
-    background-color: #28a745 !important; /* Green background */
-    color: white !important; /* White text */
+    background-color: #28a745 !important;
+    color: white !important;
 }
 
-/* Modal styles */
 .about-modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.8);
 }
 
 .about-modal-content {
-    background-color: rgba(52, 73, 94, 0.95); /* Match container background color */
-    margin: 15% auto; /* 15% from the top and centered */
+    background-color: rgba(52, 73, 94, 0.95);
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    border-radius: 10px; /* Rounded corners */
-    width: 80%; /* Could be more or less, depending on screen size */
-    color: #ecf0f1; /* Light text */
+    border-radius: 10px;
+    width: 80%;
+    color: #ecf0f1;
 }
 
 .close {
