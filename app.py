@@ -4,7 +4,7 @@ import numpy as np
 import pickle
 from Tracker import BallTracker, PlayerTracker
 from utils.video_utils import (
-    read_video, save_video, apply_masks_to_frame, bbox_intersects, collect_intersection_frames,
+    read_video, save_video, bbox_intersects, collect_intersection_frames,
     save_intersection_frames_as_images, save_sample_frames, is_within_bounds, is_bbox_within_bounds
 )
 from utils.court_utils import select_court_corners, draw_court_outline
