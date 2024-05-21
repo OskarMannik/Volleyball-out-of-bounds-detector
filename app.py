@@ -33,9 +33,9 @@ def process_video(file_path):
     ball_tracker = BallTracker('models/last.pt')
     player_tracker = PlayerTracker('yolov8x.pt')
     
-    ball_detections = ball_tracker.detect_frames(court_video_frames, read_from_stub=True, stub_path="stubs/ball_detections.pkl")
+    ball_detections = ball_tracker.detect_frames(court_video_frames, read_from_stub=False, stub_path="stubs/ball_detections.pkl")
     interpolated_ball_detections = ball_tracker.interpolate_ball_positions(ball_detections)
-    player_detections = player_tracker.detect_frames(video_frames, read_from_stub=True, stub_path="stubs/player_detections.pkl")
+    player_detections = player_tracker.detect_frames(video_frames, read_from_stub=False, stub_path="stubs/player_detections.pkl")
     
     # Collect and save intersection frames
     out_of_bounds_no_contact_frames = collect_intersection_frames(
