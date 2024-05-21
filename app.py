@@ -30,7 +30,7 @@ def process_video(file_path):
     
     court_video_frames = [draw_court_outline(frame.copy(), court_corners) for frame in video_frames]
 
-    ball_tracker = BallTracker('models/last_suur.pt')
+    ball_tracker = BallTracker('models/last.pt')
     player_tracker = PlayerTracker('yolov8x.pt')
     
     ball_detections = ball_tracker.detect_frames(court_video_frames, read_from_stub=True, stub_path="stubs/ball_detections.pkl")
