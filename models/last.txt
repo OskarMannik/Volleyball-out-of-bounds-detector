@@ -1,0 +1,1 @@
+Replace this file with the actual weights file from the Google Drive (last.pt - link is in the README).
